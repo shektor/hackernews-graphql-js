@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/shektor/hackernews-graphql-js/issues"
   },
-  "homepage": "https://github.com/shektor/hackernews-graphql-js#readme"
+  "homepage": "https://github.com/shektor/hackernews-graphql-js#readme",
+  "dependencies": {
+    "graphql-yoga": "^1.18.3"
+  }
 }
