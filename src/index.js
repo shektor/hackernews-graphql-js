@@ -8,17 +8,19 @@ let links = [{
 
 let idCount = links.length
 
+let getLinkById = (id) => {
+    for (link of links) {
+        if (link['id'] == id) {
+            return link 
+        }
+    }
+}
+
 const resolvers = {
     Query: {
         info: () => `This is the API of a Hackernews Clone`,
         feed: () => links,
-        link: (parent, args) => {
-            for (link of links) {
-                if (link['id'] == args.id) {
-                    return link 
-                }
-            }
-        }
+        link: (parent, args) => getLinkById(args.id)
     },
     Mutation: {
         post: (parent, args) => {
@@ -28,6 +30,18 @@ const resolvers = {
                 url: args.url,
             }
             links.push(link)
+            return link
+        },
+        updateLink: (parent, args) => {
+            link = getLinkById(args.id)
+            if (link != null) {
+                if (args.url != null) {
+                    link.url = args.url
+                }
+                if (args.description != null) {
+                    link.description = args.description
+                }
+            }
             return link
         }
     },
