@@ -43,6 +43,24 @@ const resolvers = {
                 }
             }
             return link
+        },
+        deleteLink: (parent, args) => {
+            let index = null
+            let link = null
+
+            for (let i = 0; i < links.length; i++) {
+                if (links[i]['id'] == args.id) {
+                    index = i
+                    link = links[i]
+                    break
+                }
+            }
+
+            if (index != null) {
+                links.splice(index, 1)
+            }
+
+            return link
         }
     },
 }
